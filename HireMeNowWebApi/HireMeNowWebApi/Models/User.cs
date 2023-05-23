@@ -26,9 +26,9 @@ namespace HireMeNowWebApi.Models
         public string ConfirmPassword { get; set; }
         public Roles Role { get; set; }
         public User() { }
-        public User( string firstname, string lastname, string email, long phone, string password, Roles roles,Guid? companyid=null)
+        public User( string firstname, string lastname, string email, long phone, string password, Roles roles,Guid? companyid=null, Guid? id = null)
         {
-            Id =  Guid.NewGuid();
+            Id = id?? Guid.NewGuid();
             FirstName = firstname;
             LastName = lastname;
             Email = email;
