@@ -10,9 +10,26 @@ namespace HireMeNowWebApi.Services
         {
             userRepository = _userRepository;
         }
+
+        public User getById(Guid userId)
+        {
+            return userRepository.getById(userId);
+        }
+
+        public User login(string email, string password)
+        {
+          return userRepository.Login(email,password);
+        }
+
         public User register(User user)
         {
             return userRepository.register(user);
+        }
+
+        public User Update(User user)
+        {
+            var updateduser=userRepository.Update(user);
+            return updateduser;
         }
     }
 }

@@ -9,7 +9,20 @@ namespace HireMeNowWebApi.Repositories
     {
         private List<User> users = new List<User> { new User( "jobprovider", "", "jobprovider@gmail.com", 123, "123", Roles.JobProvider,new Guid("ae32ba86-8e8d-4615-aa47-7387159e705d")),
          new User( "manu", "", "manu@gmail.com", 123, "123", Roles.JobSeeker),
-         new User( "rs", "", "sad@gmail.com", 123, "123", Roles.CompanyMember), new User( "arun", "", "arun@gmail.com", 123, "123", Roles.Admin)};
+         new User( "rs", "", "sad@gmail.com", 123, "123", Roles.CompanyMember),
+            new User( "arun", "", "arun@gmail.com", 123, "123", Roles.Admin)};
+
+        public User getById(Guid userId)
+        {
+           var user= users.Where(e=>e.Id==userId).FirstOrDefault();
+            return user;
+        }
+
+        public User Login(string email, string password)
+        {
+           return users.Where(e=>e.Email==email && e.Password==password).FirstOrDefault();
+        }
+
         public User register(User user)
         {
             user.Id = Guid.NewGuid();
@@ -20,7 +33,35 @@ namespace HireMeNowWebApi.Repositories
                 users.Add(user);
                 return user;
             }
-            throw new UserAlreadyExistException(user.Email);
+            else
+            {
+                throw new UserAlreadyExistException(user.Email);
+            }
+        }
+
+        public User Update(User updatedUser)
+        {
+            int indexToUpdate = users.FindIndex(item => item.Id == updatedUser.Id);
+            if (indexToUpdate != -1)
+            {
+                // Modify the properties of the item at the found index
+                users[indexToUpdate].About = updatedUser.About ?? users[indexToUpdate].About;
+                users[indexToUpdate].Experiences = updatedUser.Experiences ?? users[indexToUpdate].Experiences;
+                users[indexToUpdate].Educations = updatedUser.Educations ?? users[indexToUpdate].Educations;
+                users[indexToUpdate].Skills = updatedUser.Skills ?? users[indexToUpdate].Skills;
+                users[indexToUpdate].FirstName = updatedUser.FirstName??users[indexToUpdate].FirstName;
+                users[indexToUpdate].LastName = updatedUser.LastName??users[indexToUpdate].LastName;
+                users[indexToUpdate].Location = updatedUser.Location??users[indexToUpdate].Location;
+                users[indexToUpdate].Gender = updatedUser.Gender??users[indexToUpdate].Gender;
+                users[indexToUpdate].Phone = updatedUser.Phone==null?users[indexToUpdate].Phone : updatedUser.Phone;
+
+            }
+            else
+            {
+                throw new NotFoundException("User Not Found");
+            }
+
+            return users[indexToUpdate];
         }
     }
 }

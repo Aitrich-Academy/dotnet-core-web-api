@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace  HireMeNowWebApi.Exceptions
 {
     [Serializable]
-    public class ItemNotFoundException: Exception
+    public class NotFoundException: Exception
     {
-        public ItemNotFoundException()
+        public NotFoundException()
         {
             
         }
-        public ItemNotFoundException(string message)
+        public NotFoundException(string message)
         : base(message)
         {
         }
