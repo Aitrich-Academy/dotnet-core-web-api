@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HireMeNowWebApi.Dtos;
+using HireMeNowWebApi.Exceptions;
 using HireMeNowWebApi.Interfaces;
 using HireMeNowWebApi.Models;
 using Microsoft.AspNetCore.Http;
@@ -20,10 +21,42 @@ namespace HireMeNowWebApi.Controllers
             _mapper=mapper;
         }
         [HttpPost("/account/register")]
-        public async Task<IActionResult> Register(UserDto userDto)
+        public IActionResult Register(UserDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
             return Ok(_userService.register(user));
+        }
+
+        [HttpPost("/account/login")]
+        public IActionResult Login(LoginDto loginDto)
+        {
+            //var user = _mapper.Map<User>(userDto);
+            var user=_userService.login(loginDto.Email, loginDto.Password);
+            if(user == null)
+            {
+                return BadRequest("Login Failed");
+            }
+            return Ok(_mapper.Map<UserDto>(user));
+        }
+        [HttpGet("/account/profile")]
+        public IActionResult GetProfile(Guid userId)
+        {
+            User user = _userService.getById(userId);
+            if (user == null)
+            {
+                return BadRequest("User with id : "+userId+ " Not Found.");
+              //  throw new NotFoundException("User with id : "+userId+ " Not Found.");
+            }
+            return Ok(user);
+        }
+
+        [HttpPut("/account/profile")]
+        public IActionResult UpdateProfile(UserDto userDto)
+        {
+            var userToUpdate= _mapper.Map<User>(userDto);
+            User user = _userService.Update(userToUpdate);
+           
+            return Ok(_mapper.Map<UserDto>(user));
         }
     }
 }
