@@ -8,7 +8,7 @@ namespace HireMeNowWebApi.Repositories
     public class UserRepository : IUserRepository
     {
         private List<User> users = new List<User> { new User( "jobprovider", "", "jobprovider@gmail.com", 123, "123", Roles.JobProvider,new Guid("ae32ba86-8e8d-4615-aa47-7387159e705d"),new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6")),
-         new User( "manu", "", "manu@gmail.com", 123, "123", Roles.JobSeeker,null,new Guid("1d8303fb-c1e1-4fa6-a2e1-272472b2beb4")),
+         new User( "Yadhu", "", "yadhu.aitrich@gmail.com", 123, "123", Roles.JobSeeker,null,new Guid("1d8303fb-c1e1-4fa6-a2e1-272472b2beb4")),
          new User( "rs", "", "sad@gmail.com", 123, "123", Roles.CompanyMember),
             new User( "arun", "", "arun@gmail.com", 123, "123", Roles.Admin)};
 
