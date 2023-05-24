@@ -8,7 +8,7 @@ namespace HireMeNowWebApi.Models
 {
     public class Interview
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public int JobId { get; set; }
         public string Company { get; set; }
         public string Post { get; set; }
@@ -19,6 +19,7 @@ namespace HireMeNowWebApi.Models
         public Interview(string company, string post, string date, string location, string time)
         {
             //  JobId = jobId;
+            Id = Guid.NewGuid();
             Company = company;
             Post = post;
             Date = date;
