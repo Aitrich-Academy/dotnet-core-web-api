@@ -9,6 +9,7 @@ namespace HireMeNowWebApi.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<UserDto, User>().ReverseMap();
-        }
+			CreateMap<InterviewDto, Interview>().ReverseMap();
+		}
     }
 }
