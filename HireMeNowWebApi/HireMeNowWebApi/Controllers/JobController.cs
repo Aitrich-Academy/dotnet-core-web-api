@@ -23,14 +23,20 @@ namespace HireMeNowWebApi.Controllers
 			_mapper= mapper;
 
 		}
-        [HttpGet("/job/GetJob")]
+        [HttpGet("/job/GetJobList")]
 		public IActionResult GetJob()
 		{
 			List<Job> job = _jobService.GetJobs();
 			return Ok(job);
 		}
+		[HttpGet("/job/GetJobListByid")]
+		public IActionResult GetJob(Guid selectedJobId) 
+		{
+			Job job = _jobService.getJobById(selectedJobId);
+			return Ok(job);
+		}
 		// GET api/<JobController>/5
-		[HttpGet("/job/GetJobList")]
+		[HttpGet("/job/GetByTitle")]
 		public IActionResult Get(string title)
 		{
 			List<Job> job = _jobService.getByTitle(title);
