@@ -25,9 +25,9 @@ namespace HireMeNowWebApi.Models
 		[JsonIgnore]
 		public Company? Company { get; set; }
 
-		public Job(string title, string description, string location, string type, string salary, Guid companyId, string company)
+		public Job(string title, string description, string location, string type, string salary, Guid companyId, string company,Guid? id=null)
 		{
-			Id = Guid.NewGuid();
+			Id = id?? Guid.NewGuid();
 			Title = title;
 			Description = description;
 			Location = location;
