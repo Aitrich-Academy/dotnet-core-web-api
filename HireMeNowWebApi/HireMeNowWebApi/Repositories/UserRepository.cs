@@ -9,7 +9,7 @@ namespace HireMeNowWebApi.Repositories
     {
         private List<User> users = new List<User> { new User( "jobprovider", "", "jobprovider@gmail.com", 123, "123", Roles.JobProvider,new Guid("ae32ba86-8e8d-4615-aa47-7387159e705d"),new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6")),
          new User( "Yadhu", "", "yadhu.aitrich@gmail.com", 123, "123", Roles.JobSeeker,null,new Guid("1d8303fb-c1e1-4fa6-a2e1-272472b2beb4")),
-         new User( "rs", "", "sad@gmail.com", 123, "123", Roles.CompanyMember),
+         new User( "rs", "", "sad@gmail.com", 123, "123", Roles.CompanyMember,new Guid("1d8303fb-c1e1-4fa6-a2e1-272472b2beb4")),
             new User( "arun", "", "arun@gmail.com", 123, "123", Roles.Admin)};
 
         public User getById(Guid userId)
@@ -62,6 +62,28 @@ namespace HireMeNowWebApi.Repositories
             }
 
             return users[indexToUpdate];
+        }
+
+        public User memberRegister(User user)
+        {
+            user.Id = Guid.NewGuid();
+            user.Role = Roles.CompanyMember;
+
+            if (users.Find(e => e.Email == user.Email) == null)
+            {
+                users.Add(user);
+                return user;
+            }
+            else
+            {
+                throw new UserAlreadyExistException(user.Email);
+            }
+        }
+
+        public List<User> memberListing(Guid companyId) 
+        {
+            var memberList = users.Where(e=>e.Role==Roles.CompanyMember&& e.companyId==companyId).ToList();
+            return memberList;
         }
     }
 }

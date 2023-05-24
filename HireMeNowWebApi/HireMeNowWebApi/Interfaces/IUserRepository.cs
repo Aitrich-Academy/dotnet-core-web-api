@@ -8,5 +8,7 @@ namespace HireMeNowWebApi.Interfaces
         User Login(string email, string password);
         User register(User user);
         User Update(User user);
+        User memberRegister(User user);
+        List<User> memberListing(Guid companyId);
     }
 }

@@ -17,9 +17,9 @@ namespace HireMeNowWebApi.Services
             return _UserRepository.memberRegister(user);
         }
 
-        public List<User> memberListing()
+        public List<User> memberListing(Guid companyId)
         {
-            return _UserRepository.memberListing();
+            return _UserRepository.memberListing(companyId);
         }
     }
 }
