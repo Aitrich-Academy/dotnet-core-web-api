@@ -13,7 +13,9 @@ namespace HireMeNowWebApi.Extensions
         {
             services.AddScoped<IUserService, UserService>();
             services.AddSingleton<IUserRepository, UserRepository>();
-            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+			services.AddScoped<IJobService, JobService>();
+			services.AddSingleton<IJobRepository, JobRepository>();
+			services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
           
             return services;
         }
