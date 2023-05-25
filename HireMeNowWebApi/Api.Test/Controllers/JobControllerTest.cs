@@ -99,9 +99,9 @@ namespace Api.Test.Controllers
 			Assert.Equal(jobDto.Title, updatedjob.Title);
 			Assert.Equal(jobDto.Description, updatedjob.Description);
 			Assert.Equal(jobDto.Location, updatedjob.Location);
-			Assert.Equal(jobDto.Experience, updatedjob.Experience);
 			Assert.Equal(jobDto.Salary, updatedjob.Salary);
-			
+			Assert.Equal(jobDto.Experience, updatedjob.Experience);
+			Assert.Equal(jobDto.TypeOfWork, updatedjob.TypeOfWork); 
 			Assert.Equal(jobDto.CompanyName, updatedjob.CompanyName);
 		}
 
