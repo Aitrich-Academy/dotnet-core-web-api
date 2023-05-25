@@ -75,7 +75,7 @@ namespace HireMeNowWebApi.Repositories
 				jobs[indexToUpdate].Location = Updatedjob.Location ?? jobs[indexToUpdate].Location;
 				jobs[indexToUpdate].Salary= Updatedjob.Salary ?? jobs[indexToUpdate].Salary;
 				jobs[indexToUpdate].TypeOfWork = Updatedjob.TypeOfWork ?? jobs[indexToUpdate].TypeOfWork;
-				
+				jobs[indexToUpdate].Experience = Updatedjob.Experience ?? jobs[indexToUpdate].Experience;
 				jobs[indexToUpdate].CompanyName = Updatedjob.CompanyName ?? jobs[indexToUpdate].CompanyName;
 
 			}
