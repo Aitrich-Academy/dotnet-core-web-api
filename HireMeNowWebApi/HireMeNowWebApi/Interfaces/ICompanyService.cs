@@ -6,6 +6,7 @@ namespace HireMeNowWebApi.Interfaces
     {
         User memberRegister(User user);
         public List<User> memberListing(Guid companyId);
+        void memberDeleteById(Guid id);
 
     }
 }

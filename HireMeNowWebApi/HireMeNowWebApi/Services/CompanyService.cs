@@ -21,5 +21,9 @@ namespace HireMeNowWebApi.Services
         {
             return _UserRepository.memberListing(companyId);
         }
+        public void memberDeleteById(Guid id)
+        {
+            _UserRepository.memberDeleteById(id);
+        }
     }
 }
