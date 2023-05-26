@@ -30,10 +30,20 @@ namespace HireMeNowWebApi.Controllers
         [HttpGet("/company/memberListing")]
         public IActionResult memberListing(Guid companyId) 
         {
+            if (companyId == null)
+            {
+                return BadRequest();
+            }
             var companyMembers = _companyService.memberListing(companyId);
 
             return Ok(_mapper.Map<List<UserDto>>(companyMembers));
             
+        }
+        [HttpDelete("/company/RemoveMember")]
+        public IActionResult memberDelete(Guid id)
+        {
+            _companyService.memberDeleteById(id);
+            return NoContent(); 
         }
     }
 }
