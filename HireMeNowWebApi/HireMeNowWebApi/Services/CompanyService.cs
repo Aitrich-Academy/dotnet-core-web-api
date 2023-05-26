@@ -1,5 +1,6 @@
 ﻿using HireMeNowWebApi.Interfaces;
 using HireMeNowWebApi.Models;
+using HireMeNowWebApi.Repositories;
 
 namespace HireMeNowWebApi.Services
 {
@@ -7,9 +8,12 @@ namespace HireMeNowWebApi.Services
     {
         public IUserRepository _UserRepository;
 
-        public CompanyService(IUserRepository userRepository)
+        public ICompanyRepository _CompanyRepository;
+
+        public CompanyService(IUserRepository userRepository, ICompanyRepository companyRepository)
         {
             _UserRepository = userRepository;
+            _CompanyRepository = companyRepository;
         }
 
         public User memberRegister(User user)
@@ -25,5 +29,33 @@ namespace HireMeNowWebApi.Services
         {
             _UserRepository.memberDeleteById(id);
         }
+
+
+
+        public Company? Register(Company company)
+        {
+            return _CompanyRepository.Register(company);
+        }
+
+
+        public List<Company> GetAllCompany(string? name=null)
+        {
+            return _CompanyRepository.getAllCompanies(name);
+        }
+
+        public Company? getCompanyById(Guid id)
+        {
+            return _CompanyRepository.getById(id);
+        }
+
+        public Company Update(Company company)
+        {
+            return _CompanyRepository.Update(company);
+        }
+
+
+
+
+
     }
 }

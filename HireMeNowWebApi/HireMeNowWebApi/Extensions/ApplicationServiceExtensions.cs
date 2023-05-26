@@ -17,6 +17,7 @@ namespace HireMeNowWebApi.Extensions
 			services.AddSingleton<IInterviewRepository, InterviewRepository>();
 			services.AddScoped<IJobService, JobService>();
 			services.AddSingleton<IJobRepository, JobRepository>();
+            services.AddSingleton<ICompanyRepository, CompanyRepository>();
             services.AddScoped<ICompanyService, CompanyService>();
 			services.AddScoped<IApplicationService, ApplicationService>();
 			services.AddSingleton<IApplicationRepository, ApplicationRepository>();
