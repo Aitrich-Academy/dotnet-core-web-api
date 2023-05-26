@@ -85,6 +85,7 @@ namespace HireMeNowWebApi.Repositories
             var memberList = users.Where(e=>e.Role==Roles.CompanyMember&& e.companyId==companyId).ToList();
             return memberList;
         }
+
 		public User getuser()
 		{
 			return users.FirstOrDefault();
@@ -96,4 +97,16 @@ namespace HireMeNowWebApi.Repositories
             return users;
 		}
 	}
+
+
+        public void memberDeleteById(Guid id)
+        {
+            User user= users.Find(e=>e.Id==id);
+            if (user!=null)
+            {
+                users.Remove(user);
+            }
+        }
+    }
+
 }

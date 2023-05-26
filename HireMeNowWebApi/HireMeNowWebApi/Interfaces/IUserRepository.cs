@@ -11,6 +11,10 @@ namespace HireMeNowWebApi.Interfaces
 		User Update(User user);
         User memberRegister(User user);
         List<User> memberListing(Guid companyId);
+
         List<User> getAllUsers();
+
+        void memberDeleteById(Guid id);
+
     }
 }
