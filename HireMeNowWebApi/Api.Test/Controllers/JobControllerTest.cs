@@ -75,7 +75,30 @@ namespace Api.Test.Controllers
 			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
 		}
+		[Fact]
+		public async Task Remove_ValidId_ReturnsNoContent()
+		{
+			// Arrange
+			var jobId = new Guid("62ec44fb-9f30-4f45-8e3d-f3751998af89");
 
+			// Act
+			var response = await _httpClient.DeleteAsync($"/api/Job/{jobId}");
+
+			// Assert
+			Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+		}
+		[Fact]
+		public async Task Remove_EmptyId_ReturnBadRequest()
+		{
+			// Arrange
+			var jobId = Guid.Empty;
+
+			// Act
+			var response = await _httpClient.DeleteAsync($"/api/Job/{jobId}");
+
+			// Assert
+			Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+		}
 		[Fact]
 		public async Task PUT_Job_Results_Success()
 		{
