@@ -95,6 +95,29 @@ namespace Api.Test.Controllers
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
         [Fact]
-       
+        public async Task Remove_ValidId_ReturnsNoContent()
+        {
+            // Arrange
+            Guid userId = new Guid("1d8303fb-c1e1-4fa6-a2e1-272472b2beb4");
+
+            // Act
+            var response = await _httpClient.DeleteAsync($"/company/RemoveMember?id={userId}");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        }
+        [Fact]
+        public async Task Remove_EmptyId_ReturnBadRequest()
+        {
+            // Arrange
+            Guid? userId =null;
+
+            // Act
+            var response = await _httpClient.DeleteAsync($"/company/RemoveMember?id={userId}");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        }
+
     }
 }
