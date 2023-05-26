@@ -58,5 +58,27 @@ namespace HireMeNowWebApi.Controllers
            
             return Ok(_mapper.Map<UserDto>(user));
         }
-    }
+		[HttpGet("/account/getAllUsers")]
+		public IActionResult getAllUsers()
+		{
+            List<User> users = _userService.getAllUsers();
+			if (users == null)
+			{
+				return BadRequest("Not Found.");
+			
+			}
+			return Ok(users);
+		}
+		[HttpGet("/account/getbyId")]
+		public IActionResult getbyId(Guid UId)
+		{
+			User users = _userService.getById(UId);
+			if (users == null)
+			{
+				return BadRequest("Not Found.");
+
+			}
+			return Ok(users);
+		}
+	}
 }

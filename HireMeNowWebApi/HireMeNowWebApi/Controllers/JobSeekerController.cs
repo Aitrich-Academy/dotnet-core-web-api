@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using HireMeNowWebApi.Interfaces;
+using HireMeNowWebApi.Models;
+using HireMeNowWebApi.Repositories;
+using HireMeNowWebApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,32 +13,43 @@ namespace HireMeNowWebApi.Controllers
 
 	public class JobSeekerController : ControllerBase
 	{
-		private readonly IApplicationService _applicationService;
-		private readonly IMapper _mapper;
 
-		public JobSeekerController(IApplicationService applicationService, IMapper mapper)
+		IJobService _jobService;
+		IUserService _userService;
+		IUserRepository _userRepository;
+		IApplicationService _applicationService;
+		public JobSeekerController(IJobService jobService, IUserService userService, IUserRepository userRepository, IApplicationService applicationService)
 		{
+			_jobService = jobService;
+			_userService = userService;
+			_userRepository = userRepository;
 			_applicationService = applicationService;
-			_mapper = mapper;
 		}
 		[HttpPost]
-		public IActionResult ApplyJob(string jobId = null)
+		public IActionResult ApplyJob(Guid jobId,Guid UserId)
 		{
 			if (jobId != null)
 			{
-				var uid = HttpContext.Session.GetString("UserId");
-				//    Job job = _jobService.getJobById(new Guid(jobId));
-				//bool res=_userService.ApplyJob(new Guid(jobId),new Guid(uid));
-				_applicationService.AddApplication(new Guid(jobId), new Guid(uid));
 
-				//if (res)
-				//            {
-				return RedirectToAction("MyApplications");
-				//}
+				//bool res=_userService.ApplyJob(new Guid(jobId),new Guid(uid));
+				_applicationService.AddApplication(jobId, UserId);
+
+				
 
 			}
-			return RedirectToAction("AllJobs");
+			return NoContent();
+		}
+		[HttpGet("/AllJobs")]
+		public IActionResult AllJobs()
+		{
+			var result = _userRepository.getuser();
+			//HttpContext.Session.SetString("UserId", result.Id.ToString());
+			List<Job> jobs = _jobService.GetJobs();
+
+		
+			return Ok(jobs);
 		}
 
 	}
+
 }

@@ -21,7 +21,7 @@ namespace HireMeNowWebApi.Controllers
 			_interviewService = interviewService;
 			_mapper = mapper;
 		}
-		[HttpPost("/interviewShedule")]
+		[HttpPost("/interview/interviewShedule")]
 		public IActionResult InterviewShedule(InterviewDto interviewDto)
 		{
 			var interview = _mapper.Map<Interview>(interviewDto);

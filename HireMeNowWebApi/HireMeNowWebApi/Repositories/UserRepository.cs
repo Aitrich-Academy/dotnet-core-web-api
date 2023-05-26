@@ -14,7 +14,7 @@ namespace HireMeNowWebApi.Repositories
 
         public User getById(Guid userId)
         {
-           var user= users.Where(e=>e.Id==userId).FirstOrDefault();
+           User user= users.Where(e=>e.Id==userId).FirstOrDefault();
             return user;
         }
 
@@ -85,5 +85,15 @@ namespace HireMeNowWebApi.Repositories
             var memberList = users.Where(e=>e.Role==Roles.CompanyMember&& e.companyId==companyId).ToList();
             return memberList;
         }
-    }
+		public User getuser()
+		{
+			return users.FirstOrDefault();
+		}
+	
+
+		public List<User> getAllUsers()
+		{
+            return users;
+		}
+	}
 }
