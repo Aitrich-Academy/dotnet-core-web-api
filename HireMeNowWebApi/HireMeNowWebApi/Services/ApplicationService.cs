@@ -9,11 +9,19 @@ namespace HireMeNowWebApi.Services
 		public IUserRepository _userRepository;
 		public  IJobRepository _jobRepository;
 		public IApplicationRepository _applicationRepository;
-		public void AddApplication(Guid JobId, Guid UserId)
+        public ApplicationService(IUserRepository userRepository, IJobRepository jobRepository, IApplicationRepository applicationRepository)
+        {
+			_userRepository = userRepository;
+			_jobRepository = jobRepository;
+			_applicationRepository = applicationRepository;
+
+		}
+        public void AddApplication(Guid JobId, Guid UserId)
 		{
-			User user = _userRepository.getById(UserId);
+			User user=_userRepository.getById(UserId);
 			Job job = _jobRepository.GetJobById(JobId);
-			//_applicationRepository.AddApplication(user,job);
+			
+			_applicationRepository.AddApplication(user,job);
 		}
 	}
 }

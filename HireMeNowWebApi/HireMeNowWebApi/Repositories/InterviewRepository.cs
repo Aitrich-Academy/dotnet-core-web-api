@@ -5,7 +5,7 @@ namespace HireMeNowWebApi.Repositories
 {
 	public class InterviewRepository : IInterviewRepository
 	{
-		List<Interview> interviews = new List<Interview> { new Interview("TCS", "Developer", "10/02/2023", "Mumbai", "10.00"), new Interview("Wipro", "Developer", "11/02/2023", "EKm", "12.00"), new Interview("anglo", "Accountant", "24/02/2023", "Tcr", "12.00") };
+		List<Interview> interviews = new List<Interview> { new Interview(new Guid(), "TCS", "Developer", "10/02/2023", "Mumbai", "10.00"), new Interview(new Guid(), "Wipro", "Developer", "11/02/2023", "EKm", "12.00"), new Interview(new Guid(), "anglo", "Accountant", "24/02/2023", "Tcr", "12.00") };
 		public Interview shduleInterview(Interview interview)
 		{
 			interview.Id = Guid.NewGuid();

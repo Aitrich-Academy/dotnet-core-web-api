@@ -15,8 +15,12 @@ namespace HireMeNowWebApi.Services
         {
             return userRepository.getById(userId);
         }
+		public List<User> getAllUsers()
+		{
+			return userRepository.getAllUsers();
+		}
 
-        public User login(string email, string password)
+		public User login(string email, string password)
         {
           return userRepository.Login(email,password);
         }
@@ -31,5 +35,7 @@ namespace HireMeNowWebApi.Services
             var updateduser=userRepository.Update(user);
             return updateduser;
         }
-    }
+
+	
+	}
 }
