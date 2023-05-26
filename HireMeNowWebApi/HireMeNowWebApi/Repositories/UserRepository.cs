@@ -96,17 +96,17 @@ namespace HireMeNowWebApi.Repositories
 		{
             return users;
 		}
-	}
-
 
         public void memberDeleteById(Guid id)
         {
-            User user= users.Find(e=>e.Id==id);
+            User user = users.Find(e => e.Id==id);
             if (user!=null)
             {
                 users.Remove(user);
             }
         }
     }
+
+    
 
 }

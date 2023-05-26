@@ -45,5 +45,42 @@ namespace HireMeNowWebApi.Controllers
             _companyService.memberDeleteById(id);
             return NoContent(); 
         }
+
+        [HttpPost("/company/register")]
+        public IActionResult RegisterCompany(CompanyDto companyDto)
+        {
+            if (companyDto.Name == null)
+                return BadRequest("Company Name Is Required ");
+            Company company = _mapper.Map<Company>(companyDto);
+            return Ok(_companyService.Register(company));
+        }
+
+        [HttpGet("/company/list")]
+        public IActionResult GetAllCompany(Guid? id = null,string? name=null)
+        {
+            if (id == null)
+            {
+                List<Company> companies = _companyService.GetAllCompany(name);
+                return Ok(companies);
+            }
+            else
+            {
+                return Ok(_companyService.getCompanyById(id.Value));
+            }
+        }
+
+        [HttpPut("/company/profile")]
+        public IActionResult UpdateProfile(CompanyDto companyDto)
+        {
+            if (companyDto.Id==null)
+            {
+                return BadRequest("Id is required ");
+            }
+            Company company = _mapper.Map<Company>(companyDto);
+
+            Company updatedCompany = _companyService.Update(company);
+
+            return Ok(_mapper.Map<CompanyDto>(updatedCompany));
+        }
     }
 }

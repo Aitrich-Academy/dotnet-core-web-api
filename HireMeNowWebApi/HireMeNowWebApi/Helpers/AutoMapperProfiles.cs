@@ -10,8 +10,8 @@ namespace HireMeNowWebApi.Helpers
         {
             CreateMap<UserDto, User>().ReverseMap();
 			CreateMap<InterviewDto, Interview>().ReverseMap();
-
-			CreateMap<JobDto,Job>().ReverseMap();
+            CreateMap<CompanyDto, Company>().ReverseMap();
+            CreateMap<JobDto,Job>().ReverseMap();
 		}
 	}
 }
