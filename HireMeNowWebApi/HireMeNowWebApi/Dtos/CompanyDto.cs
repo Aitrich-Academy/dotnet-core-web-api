@@ -13,5 +13,24 @@
         public string? Mission { get; set; }
         public string? Location { get; set; }
         public string? Address { get; set; }
+
+        public CompanyDto()
+        {
+            
+        }
+        public CompanyDto(string? name, string? email, string? website, string? phone, string? image, string? about, string? vision, string? mission, string? location, string? address, Guid? id = null)
+        {
+            Id=id??new Guid();
+            Name=name;
+            Email=email;
+            Website=website;
+            Phone=phone;
+            Image=image;
+            About=about;
+            Vision=vision;
+            Mission=mission;
+            Location=location;
+            Address=address;
+        }
     }
 }
