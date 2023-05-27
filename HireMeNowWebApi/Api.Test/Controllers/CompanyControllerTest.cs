@@ -86,9 +86,9 @@ namespace Api.Test.Controllers
         public async Task Get_Listing_Company_Members_With_CompanyId_Results_Success()
         {
             //Arrange  
-            UserDto userDto = new UserDto("yadhu", "krishna", "yadhu@gmail.com", "male", "thrissur", 9633508643, "123", Roles.JobProvider);
-            HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(userDto), Encoding.UTF8);
-            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            //UserDto userDto = new UserDto("yadhu", "krishna", "yadhu@gmail.com", "male", "thrissur", 9633508643, "123", Roles.JobProvider);
+            //HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(userDto), Encoding.UTF8);
+            //httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             //Act
             var response = await _httpClient.GetAsync("company/memberListing?companyId=1d8303fb-c1e1-4fa6-a2e1-272472b2beb4");
             //Assert
