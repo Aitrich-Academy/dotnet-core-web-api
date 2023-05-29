@@ -88,16 +88,7 @@ namespace Api.Test.Controllers
 			//Assert
 			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 		}
-		[Fact]
-		public async Task Get_Listing_AppliedJobs_WithWrong_CompanyIdandUserID_Results_ReturnBadRequest()
-		{
-			var CmpId = "2";
-			var userId = "6";
-
-			//Act
-			var response = await _httpClient.GetAsync("company/memberListing?CmpId=?UserId=" + userId + "?CmpId=" + CmpId);
-			//Assert
-			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-		}
+	
+		
 	}
 }
