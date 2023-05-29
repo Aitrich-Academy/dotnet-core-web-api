@@ -18,9 +18,9 @@ namespace HireMeNowWebApi.Services
 			interviewRepository.removeInterview(id);
 		}
 
-		public List<Interview> sheduledInterviewList()
+		public List<Interview> sheduledInterviewList(Guid? id=null)
 		{
-			return interviewRepository.sheduledInterviewList();
+			return interviewRepository.sheduledInterviewList(id);
 		}
 
 		public Interview sheduleinterview(Interview interview)
