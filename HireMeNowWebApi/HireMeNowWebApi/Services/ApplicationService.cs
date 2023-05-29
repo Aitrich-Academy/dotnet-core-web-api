@@ -23,5 +23,15 @@ namespace HireMeNowWebApi.Services
 			
 			_applicationRepository.AddApplication(user,job);
 		}
+		public List<Application> AllAppliedjobs()
+		{
+
+
+			return _applicationRepository.AllAppliedjobs();
+		}
+		public List<Application> AllAppliedJobsByUserIdorCompanyID(Guid? UserId = null, Guid? CmpId = null)
+		{
+			return _applicationRepository.AllAppliedJobsByUserIdorCompanyID(UserId, CmpId);
+		}
 	}
 }

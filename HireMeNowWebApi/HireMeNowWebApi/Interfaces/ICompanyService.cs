@@ -10,7 +10,7 @@ namespace HireMeNowWebApi.Interfaces
         Company? Register(Company company);
         Company Update(Company company);
         List<Company> GetAllCompany(string? name=null);
-        Company? getCompanyById(Guid value);
+        Company? getCompanyById(Guid? value=null);
 
     }
 }

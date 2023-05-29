@@ -6,17 +6,23 @@ namespace HireMeNowWebApi.Dtos
 {
 	public class ApplicationDto
 	{
-		public ApplicationDto(Guid id, Guid jobID, Guid userID)
+		public ApplicationDto(Job job, User user, Guid? id = null)
 		{
-			Id = id;
-			JobID = jobID;
-			UserID = userID;
+			Id = Guid.NewGuid();
+			//Job.Id = job.Id;
+			//User.Id = user.Id;
 		}
+        public ApplicationDto()
+        {
+            
+        }
 
-		public Guid Id { get; set; }
-		 public Guid JobID { get; set; }
-		public Guid UserID { get; set; }
-		
+        public Guid Id { get; set; }
+		public Guid? JobId { get; set; }
+		public Guid? UserId { get; set; }
+
+	
+
 
 	}
 }

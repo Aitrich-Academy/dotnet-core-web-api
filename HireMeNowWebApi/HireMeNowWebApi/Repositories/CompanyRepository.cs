@@ -16,7 +16,7 @@ namespace HireMeNowWebApi.Repositories
             else return companies.Where(e=>e.Name.Contains(name,StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
-        public Company? getById(Guid id)
+        public Company? getById(Guid? id=null)
         {
            return companies.Where(c=>c.Id == id).FirstOrDefault();
         }

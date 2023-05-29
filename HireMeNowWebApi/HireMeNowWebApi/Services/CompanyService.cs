@@ -43,7 +43,7 @@ namespace HireMeNowWebApi.Services
             return _CompanyRepository.getAllCompanies(name);
         }
 
-        public Company? getCompanyById(Guid id)
+        public Company? getCompanyById(Guid? id=null)
         {
             return _CompanyRepository.getById(id);
         }

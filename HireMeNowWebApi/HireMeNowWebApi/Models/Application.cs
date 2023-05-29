@@ -17,13 +17,14 @@ namespace HireMeNowWebApi.Models
         {
             
         }
-        public Application(Job job, User user, string status, Guid? companyId=null)
-        {
-            Id=Guid.NewGuid();
+        public Application(Job job, User user, string status, Guid? companyId=null,Guid? id=null)
+		{
+			Id = id ?? Guid.NewGuid();
+			Id =Guid.NewGuid();
 			Job = job;
             User = user;
             Status = status;
-            CompanyId = companyId??CompanyId;
+            CompanyId = companyId?? job.CompanyId;
            
         }
     }

@@ -94,7 +94,7 @@ namespace Api.Test.Controllers
             //Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
-        [Fact]
-       
+     
+
     }
 }
